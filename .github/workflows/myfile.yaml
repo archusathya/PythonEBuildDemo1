@@ -1,18 +1,16 @@
-Here's a simplified YAML file that fits your requirements:
+name: Workflow
 
-```yaml
-name: Python & ReactJS CI
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
-    name: Building backend in Python and frontend in ReactJS
+    name: Build Python backend and ReactJS frontend
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -21,45 +19,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: 3.x
+       
 
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Compile program
-        run: python program.py
-
-      - name: Run program
-        run: python program.py
-
-      - name: Install Node.js
-        uses: actions/setup-node@v2.1.5
+      - name: Set up Node
+        uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          node-version: '14'
           
-      - name: Checkout ReactJS App
-        run: git clone https://github.com/username/project.git
-
-      - name: Install NPM dependencies
-        run: |
-          cd project
-          npm install
-
-      - name: Build ReactJS
-        run: |
-          cd project
-          npm run build
-
-      - name: Run Tests
-        run: |
-          cd project
-          npm run test
-
-      - name: Start ReactJS
-        run: |
-          cd project
-          npm start
-```
-The above YAML file identifies the frontend as Null, backend as Python and framework as ReactJS. It starts with the name of the workflow, then specifies when the workflow should be triggered. Next, it outlines the jobs to be carried out that include setting up Python, installing Python dependencies, compiling and running the Python program. Then, it sets up Node.js, checks out the React project, installs NPM
